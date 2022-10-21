@@ -6,7 +6,7 @@ EVALUACIÓN FINAL 19-10-22 -EDUARDO OSCAR ALFONZO MONTESDEOCA
 -----
 Código fuente:
 
-<https://github.com/Latitud2022/evaluacion_practica_final.git>
+<https://github.com/Latitud2022/evaluacion_final_microservicios.git>
 
 DIVIDE Y VENCERÁS…
 
