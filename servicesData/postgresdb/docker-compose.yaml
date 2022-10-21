@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  postgresdb: 
+    build: 
+      context: .
+      dockerfile: /home/ozono/Documents/evaluacion_practica_final/servicesData/postgresdb/Dockerfile
+    container_name: redsocialdataservice
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "admin"
+      PGDATA: /home/ozono/Documents/evaluacion_practica_final/servicesData/postgresdb/blockStorage/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/home/ozono/Documents/evaluacion_practica_final/servicesData/postgresdb/blockStorage
+#    command: >
+#      sh -c "echo Continua..."
+#     sh -c "nohup lanzarmaven.sh"
+
+
+volumes:
+  pgdata: {}
+
+
+#  1067909_red_social:
+#    build: 
+#      context: .
+#      dockerfile: /home/ozono/Documents/evaluacion_practica_final/1067909_red_social/Dockerfile
+#    container_name: redsocialservice
+#    restart: always
+#    image: redsocialapi
+#    ports: 
+#      - "8080:8080"

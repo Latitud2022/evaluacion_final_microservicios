@@ -1,0 +1,17 @@
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/models/Cuenta.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/repositories/IUsuarioRepository.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/services/UsuarioService.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/services/CuentaService.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/services/PublicacionService.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/controllers/UsuarioController.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/models/Usuario.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/controllers/MegustaController.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/controllers/HolaController.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/RedsocialApiApplication.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/controllers/PublicacionController.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/models/Megusta.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/models/Publicacion.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/services/MegustaService.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/repositories/IPublicacionRepository.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/repositories/IMegustaRepository.java
+/home/ozono/Documents/evaluacion_practica_final/1067909_red_social/src/main/java/com/bazrdslamdev/redsocialapi/repositories/ICuentaRepository.java

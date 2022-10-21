@@ -1,0 +1,144 @@
+version: '3.3'
+#my small orchestration
+#Evaluacion final -- microdemo "redSocial"
+networks:
+  localhost:
+#spring-boot-admin-implementation
+#first actuator's endoints
+#utility-services
+services:
+  adminredsocial:
+    image: 'imagen-adminredsocial:latest'
+    build:
+      context: /home/ozono/Documents/evaluacion_practica_final/spring-boot-admin/spring-boot-admin-server-main/.
+    container_name: sitio-adminredsocial
+    depends_on:
+      - dbredsocialserver
+      - rabbitmq
+    environment:
+      - SPRING_BOOT_ADMIN_URL=http://localhost:8085
+    networks:
+      - localhost
+    ports:
+      - 8085:8085
+  discovery-server:
+    image: 'imagen-eureka:latest'
+    build:
+      context: /home/ozono/Documents/evaluacion_practica_final/openfeign/eureka-server/.
+    container_name: container-eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - localhost
+#my broker-service para gestión de eventos
+  rabbitmq:
+    image: rabbitmq:3.6.12-management-alpine
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - localhost
+#my data-service
+  dbredsocialserver: 
+    image: 'coredb'
+    build: 
+      context: /home/ozono/Documents/evaluacion_practica_final/servicesData/postgresdb/.
+    container_name: redsocialdataservice
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "admin"
+      PGDATA: /home/ozono/Documents/evaluacion_practica_final/servicesData/postgresdb/blockStorage/pgdata
+    ports:
+      - 5432:5432
+    networks:
+      - localhost
+#i'll think at flyway migration...
+#maybe using my blockStorage!!!      
+    volumes:
+      - pgdata:/home/ozono/Documents/evaluacion_practica_final/servicesData/postgresdb/blockStorage
+#my entity-service
+  reelsredsocial:
+    image: 'reelsredsocial:latest'
+    build:
+      context: .
+    container_name: app-reelsredsocial
+    restart: always
+    depends_on:
+      - dbredsocialserver
+      - rabbitmq
+      - adminredsocial
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbredsocialserver:5432/redsocialdb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://localhost:8761
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_BOOT_ADMIN_URL=http://localhost:8085
+    ports:
+      - 8086:8086
+    networks:
+      - localhost
+#actuator's health
+#hibernate jpa orm to PL/pgSQ examples!!! on my "redSocial-EvaluacionFinal"
+  1067909_red_social:
+    image: redsocialapi
+    build: 
+      context: /home/ozono/Documents/evaluacion_practica_final/1067909_red_social/.
+    container_name: redsocialservice
+    restart: always
+    depends_on:
+      - dbredsocialserver
+      - rabbitmq
+      - adminredsocial
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbredsocialserver:5432/redsocialdb
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://localhost:8761
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_BOOT_ADMIN_URL=http://localhost:8085
+    ports: 
+      - "8081:8081"
+    networks:
+      - localhost
+#open-feign-test microapi
+#circuit-braker-test
+#eureka-demo-redsocial
+  notificaciones-redsocial:
+    image: imagen-notificacion
+    build: 
+      context: /home/ozono/Documents/evaluacion_practica_final/openfeign/notificacion/.
+    container_name: container-notificacion
+    restart: always
+    depends_on:
+      - discovery-server
+      - rabbitmq
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://localhost:8761
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    ports: 
+      - "8093:8093"
+    networks:
+      - localhost
+  leidas-redsocial:
+    image: imagen-leidas
+    build: 
+      context: /home/ozono/Documents/evaluacion_practica_final/openfeign/leidas/.
+    container_name: container-leidas
+    restart: always
+    depends_on:
+      - discovery-server
+      - rabbitmq
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://localhost:8761
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    ports: 
+      - "8094:8094"
+    networks:
+      - localhost
+volumes:
+  pgdata: {}  

@@ -1,0 +1,52 @@
+Creating network "postgresdb_default" with the default driver
+Building postgresdb
+Step 1/4 : FROM postgres:10.22-alpine
+10.22-alpine: Pulling from library/postgres
+Digest: sha256:01bee21c86f6778f5fbba0bc9b27c021fc264600e8b176667935e65d579b76b0
+Status: Downloaded newer image for postgres:10.22-alpine
+ ---> 3d706c654ec7
+Step 2/4 : COPY base-datos.sh /docker-entrypoint-initdb.d/
+ ---> a686e7e4922b
+Step 3/4 : RUN chmod +x /docker-entrypoint-initdb.d/*.sh
+ ---> Running in c345a376fcc0
+Removing intermediate container c345a376fcc0
+ ---> f24c3d4c66c4
+Step 4/4 : EXPOSE 5432
+ ---> Running in 0794c331206e
+Removing intermediate container 0794c331206e
+ ---> 71d4de58292b
+
+Successfully built 71d4de58292b
+Successfully tagged postgresdb_postgresdb:latest
+Creating redsocialdataservice ... 
+Creating redsocialdataservice
+[1A[2KCreating redsocialdataservice ... [32mdone[0m[1BAttaching to redsocialdataservice
+[36mredsocialdataservice |[0m 
+[36mredsocialdataservice |[0m PostgreSQL Database directory appears to contain a database; Skipping initialization
+[36mredsocialdataservice |[0m 
+[36mredsocialdataservice |[0m 2022-10-15 21:43:05.964 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[36mredsocialdataservice |[0m 2022-10-15 21:43:05.966 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[36mredsocialdataservice |[0m 2022-10-15 21:43:05.969 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[36mredsocialdataservice |[0m 2022-10-15 21:43:05.988 UTC [23] LOG:  database system was shut down at 2022-10-15 21:39:38 UTC
+[36mredsocialdataservice |[0m 2022-10-15 21:43:05.992 UTC [1] LOG:  database system is ready to accept connections
+[36mredsocialdataservice |[0m 2022-10-15 22:24:46.292 UTC [125] FATAL:  password authentication failed for user "rdiczgkirtkxji"
+[36mredsocialdataservice |[0m 2022-10-15 22:24:46.292 UTC [125] DETAIL:  Role "rdiczgkirtkxji" does not exist.
+[36mredsocialdataservice |[0m 	Connection matched pg_hba.conf line 95: "host all all all md5"
+[36mredsocialdataservice |[0m 2022-10-15 22:41:34.650 UTC [159] FATAL:  password authentication failed for user "rdiczgkirtkxji"
+[36mredsocialdataservice |[0m 2022-10-15 22:41:34.650 UTC [159] DETAIL:  Role "rdiczgkirtkxji" does not exist.
+[36mredsocialdataservice |[0m 	Connection matched pg_hba.conf line 95: "host all all all md5"
+[36mredsocialdataservice |[0m 2022-10-15 22:44:42.024 UTC [166] ERROR:  relation "composite_key" already exists
+[36mredsocialdataservice |[0m 2022-10-15 22:44:42.024 UTC [166] STATEMENT:  alter table if exists "StudentCourse" add constraint composite_key unique (student_id, course_key)
+[36mredsocialdataservice |[0m 2022-10-15 23:06:53.428 UTC [221] ERROR:  relation "composite_key" already exists
+[36mredsocialdataservice |[0m 2022-10-15 23:06:53.428 UTC [221] STATEMENT:  alter table if exists "StudentCourse" add constraint composite_key unique (student_id, course_key)
+[36mredsocialdataservice |[0m 2022-10-15 23:51:32.897 UTC [330] ERROR:  relation "composite_key" already exists
+[36mredsocialdataservice |[0m 2022-10-15 23:51:32.897 UTC [330] STATEMENT:  alter table if exists "StudentCourse" add constraint composite_key unique (student_id, course_key)
+[36mredsocialdataservice |[0m 2022-10-16 00:37:19.220 UTC [432] ERROR:  relation "composite_key" already exists
+[36mredsocialdataservice |[0m 2022-10-16 00:37:19.220 UTC [432] STATEMENT:  alter table if exists "StudentCourse" add constraint composite_key unique (student_id, course_key)
+[36mredsocialdataservice |[0m 2022-10-16 11:41:57.597 UTC [1] LOG:  received fast shutdown request
+[36mredsocialdataservice |[0m 2022-10-16 11:41:57.598 UTC [1] LOG:  aborting any active transactions
+[36mredsocialdataservice |[0m 2022-10-16 11:41:57.600 UTC [1] LOG:  worker process: logical replication launcher (PID 29) exited with exit code 1
+[36mredsocialdataservice |[0m 2022-10-16 11:41:57.600 UTC [24] LOG:  shutting down
+[36mredsocialdataservice |[0m 2022-10-16 11:41:57.614 UTC [1] LOG:  database system is shut down
+[36mredsocialdataservice exited with code 0
+[0m

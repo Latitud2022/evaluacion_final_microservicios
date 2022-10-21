@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Reelss</title>
+
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h2>Agregar Reels</h2>
+		<form action="#" th:action="@{/save}" th:object="${reels}"
+			method="post">
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input type="text"
+					class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+			</div>
+			<input type="hidden" th:field="*{id}" name="id" id="id">
+			<div class="form-group">
+				<label for="nombre">nombrecuenta</label> <input type="text"
+					class="form-control" id="nombrecuenta" th:field="*{nombrecuenta}"
+					name="nombrecuenta">
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Ruta Video</label> <input type="text"
+					class="form-control" id="rutavideo" th:field="*{rutavideo}"
+					name="rutavideo">
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Comentario del Reel</label> <input type="text"
+					class="form-control" id="postcomentario" th:field="*{postcomentario}"
+					name="postcomentario">
+			</div>
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+</body>
+</html>

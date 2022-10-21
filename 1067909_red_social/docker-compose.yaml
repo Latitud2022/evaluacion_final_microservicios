@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  1067909_red_social:
+    build: 
+      context: .
+      dockerfile: /home/ozono/Documents/evaluacion_practica_final/1067909_red_social/Dockerfile
+    container_name: redsocialservice
+    restart: always
+    image: redsocialapi
+    ports: 
+      - "8080:8080"

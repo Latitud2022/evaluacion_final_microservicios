@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS reels;
+
+CREATE TABLE reels (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  nombre VARCHAR(250) NOT NULL,
+  nombrecuenta VARCHAR(250) NOT NULL,
+  rutavideo VARCHAR(250) DEFAULT NULL,
+  postcomentario VARCHAR(250) DEFAULT NULL
+);
